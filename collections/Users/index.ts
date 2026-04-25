@@ -34,7 +34,6 @@ export const Users: CollectionConfig = {
       label: fieldLabels.role,
       type: 'relationship',
       relationTo: rolesSlug,
-      required: true,
       saveToJWT: true,
     },
     BooleanField({
