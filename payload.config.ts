@@ -33,11 +33,7 @@ export default buildConfig({
         : false,
   },
   globals: [],
-  collections: [
-    // globals
-    Roles,
-    Users,
-  ],
+  collections: [Roles, Users],
 
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
@@ -48,7 +44,7 @@ export default buildConfig({
   db: mongooseAdapter({
     url: process.env.MONGODB_URI || '',
     connectOptions: {
-      dbName: 'console',
+      dbName: process.env.MONGO_DB_NAME || '',
       ignoreUndefined: false,
     },
   }),

@@ -1,4 +1,4 @@
-import { OdUrl } from '@/@types/common-types';
+import { CollectionNames, OdUrl } from '@/@types/common-types';
 import { NavIconVariant } from '@/components/common/NavIcon';
 import { alwaysString } from '@/lib/commonUtils';
 import { fieldLabels } from '@/lib/fieldLabels';
@@ -58,34 +58,7 @@ const navLikTestIdPrefix = 'nav-link';
 export const urlConfig: UrlConfig = {
   app: {
     title: fieldLabels.main.plural,
-    links: {
-      days: {
-        title: fieldLabels.calendar.singular,
-        url: '/days',
-        icon: 'calendar',
-        testId: `${navLikTestIdPrefix}-days`,
-      },
-      origin: {
-        title: fieldLabels.origin.singular.nominative,
-        url: '/origin',
-        icon: 'network',
-        testId: `${navLikTestIdPrefix}-origin`,
-        children: {
-          upload: {
-            title: fieldLabels.upload.singular,
-            url: '/origin/upload',
-            testId: `${navLikTestIdPrefix}-origin-upload`,
-            children: {
-              positions: {
-                title: fieldLabels.position.plural.nominative,
-                url: '/origin/upload/positions',
-                testId: `${navLikTestIdPrefix}-origin-upload-positions`,
-              },
-            },
-          },
-        },
-      },
-    },
+    links: {},
   },
   console: {
     title: fieldLabels.settings.singular,
@@ -100,25 +73,9 @@ export const urlConfig: UrlConfig = {
   },
 };
 
-type DayUrlConfigItem = {
-  root: UrlConfigItem;
-};
-
-export function getDayLink(id: string): DayUrlConfigItem {
-  const baseUrl = `/days/${id}`;
-
-  return {
-    root: {
-      title: fieldLabels.day.singular.nominative,
-      url: baseUrl as OdUrl,
-      testId: `${navLikTestIdPrefix}-day-item`,
-    },
-  };
-}
-
 // admin
 interface GetAdminUrlParams {
-  collection: string;
+  collection: CollectionNames;
   id: string;
 }
 

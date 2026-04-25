@@ -1,7 +1,6 @@
 import 'dotenv/config';
 import { rolesSlug, usersSlug } from '@/lib/collectionNames';
 import config from '@payload-config';
-import { MongoClient } from 'mongodb';
 import { BasePayload, getPayload } from 'payload';
 
 // users
@@ -31,19 +30,6 @@ export async function createAdminUser() {
     throw new Error('Cold start is not allowed');
   }
 
-  const dbName = process.env.MONGO_DB_NAME;
-  const uri = process.env.MONGODB_URI;
-
-  if (!dbName || !uri) {
-    throw new Error('Unable to connect to database, missing environment variables');
-  }
-
-  const client = await MongoClient.connect(`${uri}`);
-  const db = client.db(dbName);
-  await db.dropDatabase();
-
   const payload = await getPayload({ config });
   await seedUsers(payload);
-
-  await client.close();
 }
