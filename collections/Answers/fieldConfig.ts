@@ -1,6 +1,6 @@
 export const answerFieldConfig = {
   userName: 'userName',
-  questionAnswers: 'questionAnswer',
+  questionAnswers: 'questionAnswers',
   questionId: 'questionId',
   questionnaireId: 'questionnaireId',
 };

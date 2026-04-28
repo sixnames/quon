@@ -1504,8 +1504,17 @@ export const fieldLabels = {
   yesOrNo: {
     singular: 'Так чи Ні',
   },
+  yes: {
+    singular: 'Так',
+  },
+  no: {
+    singular: 'Ні',
+  },
   select: {
     singular: 'З варіантами',
+  },
+  choseOption: {
+    singular: 'Оберіть варіант',
   },
 
   // unit

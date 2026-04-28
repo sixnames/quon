@@ -37,7 +37,7 @@ export default async function Page({ params }: Props) {
 
   return (
     <>
-      <OdTitle testId={'questionnaire-page'} breadcrumbs={[]}>
+      <OdTitle hideBackButton testId={'questionnaire-page'} breadcrumbs={[]}>
         {questionnaire.label}
       </OdTitle>
       <AnswerPage questionnaire={questionnaire} />

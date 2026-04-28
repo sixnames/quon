@@ -78,6 +78,7 @@ interface TitleProps extends OdBreadcrumbsProps {
   children: React.ReactNode;
   subNav?: Record<string, UrlConfigNoIconItem | undefined>;
   showCreateButton?: boolean;
+  hideBackButton?: boolean;
 }
 
 export default function OdTitle({
@@ -88,6 +89,7 @@ export default function OdTitle({
   breadcrumbs,
   titleClassName,
   showCreateButton,
+  hideBackButton,
 }: TitleProps) {
   const { back, push } = useRouter();
   const pathname = usePathname();
@@ -102,7 +104,7 @@ export default function OdTitle({
       <OdBreadcrumbs breadcrumbs={breadcrumbs} />
 
       <div className={'flex items-center gap-4'}>
-        {pathname !== '/' ? (
+        {pathname !== '/' && !hideBackButton ? (
           <Button variant='outline' size='icon' className='h-7 w-7' type={'button'} onClick={back} tabIndex={-1}>
             <ChevronLeft className='h-4 w-4' />
             <span className='sr-only'>Назад</span>

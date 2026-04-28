@@ -172,7 +172,7 @@ export interface Answer {
   id: string;
   userName: string;
   questionnaireId: string;
-  questionAnswer?: QuestionAnswers;
+  questionAnswers?: QuestionAnswers;
   updatedAt: string;
   createdAt: string;
 }
@@ -344,7 +344,7 @@ export interface QuestionsSelect<T extends boolean = true> {
 export interface AnswersSelect<T extends boolean = true> {
   userName?: T;
   questionnaireId?: T;
-  questionAnswer?: T | QuestionAnswersSelect<T>;
+  questionAnswers?: T | QuestionAnswersSelect<T>;
   updatedAt?: T;
   createdAt?: T;
 }
