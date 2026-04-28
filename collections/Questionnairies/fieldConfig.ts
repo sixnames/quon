@@ -7,4 +7,5 @@ export const questionnaireFieldConfig = {
   options: 'options',
   questionText: 'questionText',
   description: 'description',
+  rating: 'rating',
 };

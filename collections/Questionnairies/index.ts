@@ -105,6 +105,13 @@ export const Questionnairies: CollectionConfig = {
               type: 'text',
               required: true,
             },
+            {
+              name: questionnaireFieldConfig.rating,
+              label: fieldLabels.rating.singular,
+              type: 'number',
+              min: 0,
+              required: true,
+            },
           ],
         },
       ],

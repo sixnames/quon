@@ -18,6 +18,7 @@ export type Questions =
       options?:
         | {
             label: string;
+            rating: number;
             id?: string | null;
           }[]
         | null;
@@ -297,6 +298,7 @@ export interface QuestionsSelect<T extends boolean = true> {
     | T
     | {
         label?: T;
+        rating?: T;
         id?: T;
       };
   id?: T;

@@ -14,6 +14,9 @@ export const fieldLabels = {
   label: {
     singular: 'Назва',
   },
+  rating: {
+    singular: 'Оцінка',
+  },
   archiveLabel: {
     singular: 'Назва архіву',
   },
