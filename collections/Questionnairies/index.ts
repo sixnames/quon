@@ -1,6 +1,5 @@
 import { questionnaireFieldConfig } from '@/collections/Questionnairies/fieldConfig';
 import { getCreateAccess, getDeleteAccess, getReadAccess, getUpdateAccess } from '@/collections/Roles/utils';
-import { userFieldConfig } from '@/collections/Users/fieldConfig';
 import { questionnairiesSlug } from '@/lib/collectionNames';
 import { fieldLabels } from '@/lib/fieldLabels';
 import type { CollectionConfig } from 'payload';
@@ -19,12 +18,7 @@ export const Questionnairies: CollectionConfig = {
   },
   admin: {
     useAsTitle: questionnaireFieldConfig.label,
-    defaultColumns: [
-      userFieldConfig.username,
-      userFieldConfig.createdAt,
-      userFieldConfig.updatedAt,
-      userFieldConfig.isAdmin,
-    ],
+    defaultColumns: [],
   },
   fields: [
     {

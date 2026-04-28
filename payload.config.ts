@@ -1,3 +1,4 @@
+import { Answers } from '@/collections/Answers';
 import { Questionnairies } from '@/collections/Questionnairies';
 import { Roles } from '@/collections/Roles';
 import { mongooseAdapter } from '@payloadcms/db-mongodb';
@@ -34,7 +35,7 @@ export default buildConfig({
         : false,
   },
   globals: [],
-  collections: [Questionnairies, Roles, Users],
+  collections: [Questionnairies, Answers, Roles, Users],
 
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',

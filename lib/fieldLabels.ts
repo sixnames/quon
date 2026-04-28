@@ -1,4 +1,7 @@
 export const fieldLabels = {
+  id: {
+    singular: 'ID',
+  },
   not: {
     singular: 'не',
   },
@@ -1467,6 +1470,22 @@ export const fieldLabels = {
       ablative: 'Відповідями',
     },
   },
+  questionAnswer: {
+    singular: {
+      nominative: 'Відповідь на питання',
+      genitive: 'Відповіді на питання',
+      dative: 'Відповіді на питання',
+      accusative: 'Відповідь на питання',
+      ablative: 'Відповіддю на питання',
+    },
+    plural: {
+      nominative: 'Відповіді на питання',
+      genitive: 'Відповідей на питання',
+      dative: 'Відповідям на питання',
+      accusative: 'Відповіді на питання',
+      ablative: 'Відповідями на питання',
+    },
+  },
   questionVariant: {
     singular: 'Варіант питання',
     plural: 'Варіанти питань',
@@ -2045,6 +2064,9 @@ export const fieldLabels = {
   user: {
     singular: 'Користувач',
     plural: 'Користувачі',
+  },
+  userName: {
+    singular: 'ПІБ користувача',
   },
   isAdmin: {
     singular: 'Адміністратор',
