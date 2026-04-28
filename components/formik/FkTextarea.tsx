@@ -7,7 +7,7 @@ import { alwaysString } from '@/lib/commonUtils';
 import { cn } from '@/lib/utils';
 import { useField } from 'formik';
 import debounce from 'lodash/debounce';
-import { ChangeEvent, ReactNode, useEffect, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 
 export interface FKTextareaProps extends FKInputCommonProps {
   placeholder?: string;
@@ -18,6 +18,7 @@ export interface FKTextareaProps extends FKInputCommonProps {
   maxLength?: number;
   inputClassName?: string;
   delay?: number;
+  withError?: boolean;
 }
 
 export default function FkTextarea({
@@ -35,9 +36,10 @@ export default function FkTextarea({
   maxLength,
   removeProps,
   delay = 300,
+  ...props
 }: FKTextareaProps) {
   const [{ value }, _meta, { setValue }] = useField<string>(name);
-  const withError = useFieldError(name);
+  const withError = useFieldError(name) || props.withError;
   const [localValue, setLocalValue] = useState<undefined | string>(undefined);
   const [isMounted, setIsMounted] = useState<boolean>(false);
 

@@ -7,11 +7,12 @@ import { useEffect, useState } from 'react';
 export interface FKInputProps extends Omit<OdInputProps, 'value' | 'withError' | 'onChangeCallback'> {
   onChangeCallback?: (value: string) => void | Promise<void>;
   delay?: number;
+  withError?: boolean;
 }
 
 export default function FkInput({ name, onChangeCallback, delay = 300, ...props }: FKInputProps) {
   const [{ value }, _meta, { setValue }] = useField<string>(name);
-  const withError = useFieldError(name);
+  const withError = useFieldError(name) || props.withError;
   const [localValue, setLocalValue] = useState<undefined | string>(undefined);
   const [isMounted, setIsMounted] = useState<boolean>(false);
 

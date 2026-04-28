@@ -10,6 +10,7 @@ interface FKButtonProps extends Omit<OdButtonProps, 'type' | 'disabled'> {
   errorsListClassName?: string;
   disabled?: boolean;
   withKeyboardShortcut?: boolean;
+  errorsTitle?: string;
 }
 
 export default function FkButton({
@@ -18,6 +19,7 @@ export default function FkButton({
   withKeyboardShortcut,
   errorsListClassName,
   disabled,
+  errorsTitle,
   ...rest
 }: FKButtonProps) {
   const { errors, isValid, submitForm } = useFormikContext();
@@ -34,7 +36,9 @@ export default function FkButton({
   const isWithErrors = errorsList.length > 0;
   return (
     <>
-      {isWithErrors && showErrorsList ? <FKErrorsInfobox errorsList={errorsList} className={'mb-6'} /> : null}
+      {isWithErrors && showErrorsList ? (
+        <FKErrorsInfobox errorsList={errorsList} className={'mb-6'} title={errorsTitle || 'Заповніть наступні поля:'} />
+      ) : null}
 
       <OdButton {...rest} type={'submit'} disabled={!isValid || disabled}>
         {children}
