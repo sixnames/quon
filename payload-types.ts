@@ -7,6 +7,24 @@
  */
 
 /**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Questions".
+ */
+export type Questions =
+  | {
+      questionText: string;
+      description?: string | null;
+      variant?: ('boolean' | 'text' | 'select') | null;
+      options?:
+        | {
+            label: string;
+            id?: string | null;
+          }[]
+        | null;
+      id?: string | null;
+    }[]
+  | null;
+/**
  * Supported timezones in IANA format.
  *
  * This interface was referenced by `Config`'s JSON-Schema
@@ -67,6 +85,7 @@ export interface Config {
   };
   blocks: {};
   collections: {
+    questionnairies: Questionnairy;
     roles: Role;
     users: User;
     'payload-kv': PayloadKv;
@@ -76,6 +95,7 @@ export interface Config {
   };
   collectionsJoins: {};
   collectionsSelect: {
+    questionnairies: QuestionnairiesSelect<false> | QuestionnairiesSelect<true>;
     roles: RolesSelect<false> | RolesSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
@@ -117,11 +137,23 @@ export interface UserAuthOperations {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "questionnairies".
+ */
+export interface Questionnairy {
+  id: string;
+  label: string;
+  questions?: Questions;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "roles".
  */
 export interface Role {
   id: string;
   label?: string | null;
+  questionnairies?: RoleCollection;
   roles?: RoleCollection;
   updatedAt: string;
   createdAt: string;
@@ -143,7 +175,7 @@ export interface RoleCollection {
  */
 export interface User {
   id: string;
-  role: string | Role;
+  role?: (string | null) | Role;
   isAdmin?: boolean | null;
   updatedAt: string;
   createdAt: string;
@@ -189,6 +221,10 @@ export interface PayloadKv {
 export interface PayloadLockedDocument {
   id: string;
   document?:
+    | ({
+        relationTo: 'questionnairies';
+        value: string | Questionnairy;
+      } | null)
     | ({
         relationTo: 'roles';
         value: string | Role;
@@ -241,10 +277,37 @@ export interface PayloadMigration {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "questionnairies_select".
+ */
+export interface QuestionnairiesSelect<T extends boolean = true> {
+  label?: T;
+  questions?: T | QuestionsSelect<T>;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "Questions_select".
+ */
+export interface QuestionsSelect<T extends boolean = true> {
+  questionText?: T;
+  description?: T;
+  variant?: T;
+  options?:
+    | T
+    | {
+        label?: T;
+        id?: T;
+      };
+  id?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "roles_select".
  */
 export interface RolesSelect<T extends boolean = true> {
   label?: T;
+  questionnairies?: T | RoleCollectionSelect<T>;
   roles?: T | RoleCollectionSelect<T>;
   updatedAt?: T;
   createdAt?: T;

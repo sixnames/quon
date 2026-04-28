@@ -1,19 +1,21 @@
 import { BooleanField } from '@/collections/commonFields';
+import { Questionnairies } from '@/collections/Questionnairies';
 import { getCreateAccess, getDeleteAccess, getReadAccess, getUpdateAccess } from '@/collections/Roles/utils';
-import { rolesSlug } from '@/lib/collectionNames';
+import { questionnairiesSlug, rolesSlug } from '@/lib/collectionNames';
 import { alwaysString } from '@/lib/commonUtils';
 import { fieldLabels } from '@/lib/fieldLabels';
 import { CollectionConfig, Field } from 'payload';
 import { roleFieldConfig } from './fieldConfig';
 
 const ruleCollections = [
+  Questionnairies,
   {
     slug: rolesSlug,
     labels: fieldLabels.role,
   },
 ];
 
-export const ruleCollectionSlugs = [rolesSlug] as const;
+export const ruleCollectionSlugs = [questionnairiesSlug, rolesSlug] as const;
 
 export const roleRuleActions = [
   {

@@ -1427,6 +1427,62 @@ export const fieldLabels = {
     action: 'Згенерувати',
   },
 
+  // questionnaire
+  questionnaire: {
+    singular: {
+      nominative: 'Опитування',
+      genitive: 'Опитування',
+      dative: 'Опитуванню',
+      accusative: 'Опитування',
+      ablative: 'Опитуванням',
+    },
+    plural: {
+      nominative: 'Опитування',
+      genitive: 'Опитувань',
+      dative: 'Опитуванню',
+      accusative: 'Опитування',
+      ablative: 'Опитуваннями',
+    },
+  },
+  question: {
+    singular: 'Питання',
+    plural: 'Питання',
+  },
+  answer: {
+    singular: {
+      nominative: 'Відповідь',
+      genitive: 'Відповіді',
+      dative: 'Відповіді',
+      accusative: 'Відповідь',
+      ablative: 'Відповіддю',
+    },
+    plural: {
+      nominative: 'Відповіді',
+      genitive: 'Відповідей',
+      dative: 'Відповідям',
+      accusative: 'Відповіді',
+      ablative: 'Відповідями',
+    },
+  },
+  questionVariant: {
+    singular: 'Варіант питання',
+    plural: 'Варіанти питань',
+  },
+  answerVariant: {
+    singular: 'Варіант відповіді',
+    plural: 'Варіанти відповіді',
+  },
+  description: {
+    singular: 'Опис',
+    plural: 'Описи',
+  },
+  yesOrNo: {
+    singular: 'Так чи Ні',
+  },
+  select: {
+    singular: 'З варіантами',
+  },
+
   // unit
   unit: {
     singular: {
@@ -1459,10 +1515,6 @@ export const fieldLabels = {
   },
   patronymicName: {
     singular: 'По батькові',
-  },
-  questionnaire: {
-    singular: 'Анкета',
-    plural: 'Анкети',
   },
   familyMember: {
     singular: `Родич`,
