@@ -26,6 +26,20 @@ export type Questions =
     }[]
   | null;
 /**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "QuestionAnswers".
+ */
+export type QuestionAnswers =
+  | {
+      questionId?: string | null;
+      boolean?: boolean | null;
+      text?: string | null;
+      select?: string | null;
+      number?: number | null;
+      id?: string | null;
+    }[]
+  | null;
+/**
  * Supported timezones in IANA format.
  *
  * This interface was referenced by `Config`'s JSON-Schema
@@ -87,6 +101,7 @@ export interface Config {
   blocks: {};
   collections: {
     questionnairies: Questionnairy;
+    answers: Answer;
     roles: Role;
     users: User;
     'payload-kv': PayloadKv;
@@ -97,6 +112,7 @@ export interface Config {
   collectionsJoins: {};
   collectionsSelect: {
     questionnairies: QuestionnairiesSelect<false> | QuestionnairiesSelect<true>;
+    answers: AnswersSelect<false> | AnswersSelect<true>;
     roles: RolesSelect<false> | RolesSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
@@ -143,7 +159,20 @@ export interface UserAuthOperations {
 export interface Questionnairy {
   id: string;
   label: string;
+  description?: string | null;
   questions?: Questions;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "answers".
+ */
+export interface Answer {
+  id: string;
+  userName: string;
+  questionnaireId: string;
+  questionAnswer?: QuestionAnswers;
   updatedAt: string;
   createdAt: string;
 }
@@ -227,6 +256,10 @@ export interface PayloadLockedDocument {
         value: string | Questionnairy;
       } | null)
     | ({
+        relationTo: 'answers';
+        value: string | Answer;
+      } | null)
+    | ({
         relationTo: 'roles';
         value: string | Role;
       } | null)
@@ -282,6 +315,7 @@ export interface PayloadMigration {
  */
 export interface QuestionnairiesSelect<T extends boolean = true> {
   label?: T;
+  description?: T;
   questions?: T | QuestionsSelect<T>;
   updatedAt?: T;
   createdAt?: T;
@@ -301,6 +335,29 @@ export interface QuestionsSelect<T extends boolean = true> {
         rating?: T;
         id?: T;
       };
+  id?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "answers_select".
+ */
+export interface AnswersSelect<T extends boolean = true> {
+  userName?: T;
+  questionnaireId?: T;
+  questionAnswer?: T | QuestionAnswersSelect<T>;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "QuestionAnswers_select".
+ */
+export interface QuestionAnswersSelect<T extends boolean = true> {
+  questionId?: T;
+  T?: T;
+  text?: T;
+  select?: T;
+  number?: T;
   id?: T;
 }
 /**

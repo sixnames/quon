@@ -1,5 +1,5 @@
 import { questionnaireFieldConfig } from '@/collections/Questionnairies/fieldConfig';
-import { getCreateAccess, getDeleteAccess, getReadAccess, getUpdateAccess } from '@/collections/Roles/utils';
+import { getCreateAccess, getDeleteAccess, getUpdateAccess } from '@/collections/Roles/utils';
 import { questionnairiesSlug } from '@/lib/collectionNames';
 import { fieldLabels } from '@/lib/fieldLabels';
 import type { CollectionConfig } from 'payload';
@@ -12,7 +12,6 @@ export const Questionnairies: CollectionConfig = {
   },
   access: {
     create: getCreateAccess(questionnairiesSlug),
-    read: getReadAccess(questionnairiesSlug),
     update: getUpdateAccess(questionnairiesSlug),
     delete: getDeleteAccess(questionnairiesSlug),
   },
@@ -26,6 +25,11 @@ export const Questionnairies: CollectionConfig = {
       label: fieldLabels.label.singular,
       type: 'text',
       required: true,
+    },
+    {
+      type: 'textarea',
+      name: questionnaireFieldConfig.description,
+      label: fieldLabels.description.singular,
     },
     {
       type: 'array',

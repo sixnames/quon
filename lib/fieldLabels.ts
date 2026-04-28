@@ -2,6 +2,9 @@ export const fieldLabels = {
   id: {
     singular: 'ID',
   },
+  link: {
+    singular: 'Посилання',
+  },
   not: {
     singular: 'не',
   },
