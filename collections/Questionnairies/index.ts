@@ -80,6 +80,10 @@ export const Questionnairies: CollectionConfig = {
               value: 'select',
               label: fieldLabels.select.singular,
             },
+            {
+              value: 'number',
+              label: fieldLabels.number.singular,
+            },
           ],
         },
         {

@@ -14,7 +14,7 @@ export type Questions =
   | {
       questionText: string;
       description?: string | null;
-      variant?: ('boolean' | 'text' | 'select') | null;
+      variant?: ('boolean' | 'text' | 'select' | 'number') | null;
       options?:
         | {
             label: string;

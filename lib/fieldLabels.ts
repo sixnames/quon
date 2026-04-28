@@ -191,7 +191,7 @@ export const fieldLabels = {
     singular: 'ТВО помічника командира військової частини з правової роботи',
   },
   number: {
-    singular: 'Номер',
+    singular: 'Число',
   },
   ingoingNumber: {
     singular: 'Вхідний номер',
